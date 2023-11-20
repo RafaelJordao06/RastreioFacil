@@ -1,0 +1,183 @@
+/* Reset CSS Básico */
+
+/* Remover margens e preenchimentos padrões */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Definir fontes padrões mais consistentes */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Remover list-style para listas não ordenadas e ordenadas */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remover decoração de texto para links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Remover bordas para imagens e iframes */
+img,
+iframe {
+  border: 0;
+}
+
+body {
+  background-image: url("/img/map.svg");
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center center;
+}
+
+p {
+  font-size: 0.8rem;
+}
+
+.main-container {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-image {
+  width: 25.4375rem;
+  height: 20vh;
+}
+
+div .tracking-container {
+  background-color: #fff;
+  width: 51.0625rem;
+  margin-top: 2.25rem;
+  border: 0.125rem solid #bebab3;
+  border-radius: 1rem;
+  min-height: 60vh;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 72vh;
+}
+
+div .tracking-form {
+  margin-top: 2.5rem;
+  width: 37.5rem;
+}
+
+input {
+  width: 35.625rem;
+  padding: 0.625rem 0;
+  border: none;
+}
+
+div .tracking-code-container {
+  display: flex;
+  border: 0.0625rem solid #bebab3;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
+}
+
+.icon-busca {
+  padding: 0.3125rem;
+  display: flex;
+  align-content: center;
+}
+
+.tracking-status-container {
+  margin-top: 1.625rem;
+  border: 0.0625rem solid #bebab3;
+  border-radius: 0.3125rem;
+  width: 26rem;
+  height: auto;
+  padding: 1.25rem;
+}
+
+.tracking-status-title {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  margin-bottom: 0.18rem;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.status-information {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  grid-gap: 0.625rem;
+}
+
+.icon {
+  margin-right: 1rem;
+}
+
+.tracking-details {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-gap: 0.3125rem;
+}
+
+.time {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Estilos para dispositivos com largura máxima de 600px */
+@media screen and (max-width: 800px) {
+  body {
+    background-image: url("/img/map.svg");
+    background-size: cover; /* Cobrir toda a área visível */
+    background-repeat: repeat;
+    background-position: center center;
+  }
+
+  .title-image {
+    width: 90%; /* Tamanho relativo para se adaptar à tela */
+    height: auto; /* Altura automática para manter a proporção */
+  }
+
+  div .tracking-form,
+  input {
+    width: 90%; /* Largura relativa para ocupar a maioria da tela */
+  }
+  div .tracking-container {
+    height: 100vh;
+    width: 90%;
+  }
+
+  .tracking-status-container {
+    width: 90%; /* Ajusta a largura para se adequar à tela */
+  }
+}
