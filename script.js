@@ -52,17 +52,17 @@ function criarHtmlEvento(evento) {
 
 function selecionarIcon($status) {
   $mapeamentoIcones = {
-    "Objeto entregue ao destinatário": "Certo.svg",
-    "Objeto saiu para entrega ao destinatário": "EntregadorMoto.svg",
-    "A entrega não pode ser efetuada - Carteiro não atendido":
-      "EntregadorNaoRecebido.svg",
-    "Objeto encaminhado": "Caminhao.svg",
-    "Objeto recebido pelos Correios do Brasil": "Bandeira.svg",
-    "Objeto postado": "Entregador.svg",
-    "Fiscalização aduaneira concluída - aguardando pagamento": "Carteira.svg",
+    "Objeto entregue ao destinatário": "certo.svg",
+    "Objeto saiu para entrega ao destinatário": "entregadorMoto.svg",
+    "A entrega não pode ser efetuada - carteiro não atendido":
+      "entregadorNaoRecebido.svg",
+    "Objeto encaminhado": "caminhao.svg",
+    "Objeto recebido pelos Correios do Brasil": "bandeira.svg",
+    "Objeto postado": "entregador.svg",
+    "Fiscalização aduaneira concluída - aguardando pagamento": "carteira.svg",
     "Pagamento confirmado": "pagamentoConfirmado.svg",
-    "Solicitação de revisão do tributo": "SolicitacaoTributario.svg",
-    "Revisão de tributos solicitada pelo cliente": "Revisaotributos.svg",
+    "Solicitação de revisão do tributo": "solicitacaoTributario.svg",
+    "Revisão de tributos solicitada pelo cliente": "revisaotributos.svg",
   };
 
   return $mapeamentoIcones[$status] || "Caminhao.svg";
