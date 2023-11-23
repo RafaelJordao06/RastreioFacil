@@ -151,6 +151,26 @@ div .tracking-code-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+.time .data {
+  justify-self: start;
+}
+
+.time .hora {
+  justify-self: end;
+}
+
+#loadingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
 input:focus {
   outline: none;
@@ -172,7 +192,7 @@ input:focus {
 
   div .tracking-form,
   input {
-    width: 90%; /* Largura relativa para ocupar a maioria da tela */
+    width: 85%; /* Largura relativa para ocupar a maioria da tela */
   }
   div .tracking-container {
     min-height: 100vh;
@@ -180,6 +200,8 @@ input:focus {
   }
 
   .tracking-status-container {
-    width: 90%; /* Ajusta a largura para se adequar à tela */
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
