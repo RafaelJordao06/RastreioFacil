@@ -22,8 +22,11 @@ function performSearch() {
   document.getElementById("loadingScreen").style.display = "flex";
 
   // Fazer uma requisição para o servidor Node.js
+  const userEmail = process.env.USER_EMAIL;
+  const apiToken = process.env.API_TOKEN;
+
   fetch(
-    `https://api.linketrack.com/track/json?user=rafaeljordao.b@gmail.com&token=ce83913968b30011415902c9b618448302730ee880b610737196574e982363d1&codigo=${trackingCode}`
+    `https://api.linketrack.com/track/json?user=${userEmail}&token=${apiToken}&codigo=${trackingCode}`
   )
     .then((response) => response.json())
     .then((data) => {
