@@ -21,18 +21,17 @@ function performSearch() {
 
   document.getElementById("loadingScreen").style.display = "flex";
 
-  // Fazer uma requisição para o servidor Node.js
-  const userEmail = process.env.USER_EMAIL;
-  const apiToken = process.env.API_TOKEN;
-
-  fetch(
-    `https://api.linketrack.com/track/json?user=${userEmail}&token=${apiToken}&codigo=${trackingCode}`
-  )
+  fetch("/track", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ trackingCode: trackingCode }),
+  })
     .then((response) => response.json())
     .then((data) => {
       processarEventos(data.eventos);
       console.log(data);
-      console.log(data.eventos.length);
       document.getElementById("loadingScreen").style.display = "none";
     })
     .catch((error) => {
