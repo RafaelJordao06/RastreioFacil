@@ -21,12 +21,11 @@ function performSearch() {
 
   document.getElementById("loadingScreen").style.display = "flex";
 
-  fetch("/track", {
-    method: "POST",
+  fetch("https://api-rastreio-pce1.onrender.com/track/" + trackingCode, {
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ trackingCode: trackingCode }),
   })
     .then((response) => response.json())
     .then((data) => {
