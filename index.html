@@ -14,27 +14,40 @@
   <div class="main-container">
     <img class="title-image" src="/img/titulo.svg" alt="titulo">
 
-    <div class="tracking-container">
-      <div id="loadingScreen" style="display:none;">
-        <!-- Conteúdo da Tela de Carregamento -->
-        <img class="img-carregando" src="/img/carregando.png" alt="carregando">
-      </div>
-      <div class="tracking-form">
-        <label for="codigo">Código de Rastreio</label><br>
+    <div class="container">
 
-        <div class="tracking-code-container">
-          <input type="text" id="codigo" placeholder="PW935793588BR" name="codigo">
-          <a class="icon-busca" href="#" onclick="performSearch()">
-            <img src="/img/lupa.svg" alt="Buscar">
-          </a>
+      <div class="tracking-container">
+
+        <div id="loadingScreen" style="display:none;">
+          <!-- Conteúdo da Tela de Carregamento -->
+          <img class="img-carregando" src="/img/carregando.png" alt="carregando">
+        </div>
+
+        <div class="tracking-form">
+          <label for="codigo">Código de Rastreio</label><br>
+
+          <div class="tracking-code-container">
+            <input type="text" id="codigo" placeholder="PW935793588BR" name="codigo">
+            <a class="icon-busca" href="#" onclick="performSearch()">
+              <img src="/img/lupa.svg" alt="Buscar">
+            </a>
+          </div>
+
+        </div>
+
+        <div id="eventos-container"></div>
+
+      </div>
+
+      <div class="tracking-history">
+        <div class="tracking-search">
+          <label>Histórico de busca</label><br>
+          <div id="tracking-history-container"></div>
+          <div>
+          </div>
         </div>
       </div>
-
-      <div id="eventos-container"></div>
-
-    </div>
-  </div>
-  <script src="script.js"></script>
+      <script src="script.js"></script>
 </body>
 
 </html>

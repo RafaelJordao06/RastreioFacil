@@ -59,22 +59,16 @@ p {
   font-size: 0.8rem;
 }
 
-.main-container {
-  margin-top: 1.25rem;
+div .container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.title-image {
-  width: 25.4375rem;
-  height: 20vh;
+  justify-content: space-between;
+  width: 70.5rem;
+  min-height: 60vh;
 }
 
 div .tracking-container {
   background-color: #fff;
-  width: 51.0625rem;
+  width: 37.125rem;
   margin-top: 2.25rem;
   border: 0.125rem solid #bebab3;
   border-radius: 1rem;
@@ -88,7 +82,33 @@ div .tracking-container {
 
 div .tracking-form {
   margin-top: 2.5rem;
-  width: 37.5rem;
+  width: 26rem;
+}
+
+div .tracking-search {
+  margin-top: 2.5rem;
+  width: 25rem;
+}
+
+div .tracking-history {
+  background-color: #fff;
+  margin-top: 2.25rem;
+  border: 0.125rem solid #bebab3;
+  border-radius: 1rem;
+  min-height: 60vh;
+  padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 72vh;
+  width: 28.313rem;
+}
+
+div .tracking-code-container {
+  display: flex;
+  border: 0.0625rem solid #bebab3;
+  padding: 0.625rem;
+  border-radius: 0.3125rem;
 }
 
 input {
@@ -97,11 +117,18 @@ input {
   border: none;
 }
 
-div .tracking-code-container {
+.main-container {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
   display: flex;
-  border: 0.0625rem solid #bebab3;
-  padding: 0.625rem;
-  border-radius: 0.3125rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-image {
+  width: 25.4375rem;
+  height: 20vh;
 }
 
 .icon-busca {
@@ -117,6 +144,20 @@ div .tracking-code-container {
   width: 26rem;
   height: auto;
   padding: 1.25rem;
+}
+.tracking-history-item {
+  margin-top: 1.625rem;
+  border: 0.0625rem solid #bebab3;
+  border-radius: 0.3125rem;
+  width: 25.23rem;
+  height: auto;
+  padding: 1.25rem;
+  transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.tracking-history-item:hover {
+  background-color: #f0f0f0; /* Cor de fundo quando o mouse está sobre o item */
+  cursor: pointer; /* Altera o cursor para indicar que é clicável */
 }
 
 .tracking-status-title {

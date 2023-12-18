@@ -6,6 +6,11 @@ document
     }
   });
 
+// Carregar histórico do localStorage
+window.onload = function () {
+  loadSearchHistory();
+};
+
 function performSearch() {
   var inputCodigo = document.getElementById("codigo");
   // Obter o valor do campo de entrada
@@ -20,7 +25,7 @@ function performSearch() {
   trackingCode = trackingCode.replace(/\s+/g, "").toUpperCase();
 
   document.getElementById("loadingScreen").style.display = "flex";
-
+  //console.log("Enviei a requisicao");
   fetch("https://api-rastreio-pce1.onrender.com/track/" + trackingCode, {
     method: "GET",
     headers: {
@@ -30,13 +35,16 @@ function performSearch() {
     .then((response) => response.json())
     .then((data) => {
       processarEventos(data.eventos);
-      console.log(data);
+      //console.log(data);
       document.getElementById("loadingScreen").style.display = "none";
     })
     .catch((error) => {
       console.error("Erro ao rastrear:", error);
       document.getElementById("loadingScreen").style.display = "none";
     });
+
+  console.log("Search performed:", trackingCode);
+  saveSearchToHistory(trackingCode);
 }
 
 function processarEventos(eventos) {
@@ -111,4 +119,55 @@ function validarCodigoRastreio(trackingCode) {
     padraoFedEx.test(trackingCode) ||
     padraoDHL.test(trackingCode)
   );
+}
+
+function loadSearchHistory() {
+  var historyContainer = document.getElementById("tracking-history-container");
+  historyContainer.innerHTML = ""; // Limpar conteúdo anterior
+
+  var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+
+  searchHistory.forEach(function (searchItem) {
+    var historyItem = criarHtmlSearchHistoryItem(searchItem);
+    // Usar innerHTML para adicionar HTML à div, não appendChild
+    historyContainer.innerHTML += historyItem;
+  });
+}
+
+function criarHtmlSearchHistoryItem(searchItem) {
+  return `
+    <div class="tracking-history-item" onclick="selecionarHistorico('${searchItem}')">
+      <div class="history-item-content">
+        <p>${searchItem}</p>
+      </div>
+    </div>
+  `;
+}
+
+function selecionarHistorico(codigo) {
+  // Lógica para lidar com a seleção do histórico (por exemplo, realizar a busca)
+  document.getElementById("codigo").value = codigo;
+  performSearch();
+}
+
+function saveSearchToHistory(searchItem) {
+  var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+
+  // Verificar se o código já está no histórico
+  if (searchHistory.indexOf(searchItem) === -1) {
+    searchHistory.push(searchItem);
+
+    // Limitar o histórico a um número específico de itens, se necessário
+    if (searchHistory.length > 5) {
+      searchHistory.shift();
+    }
+
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    loadSearchHistory(); // Atualizar a exibição do histórico
+  }
+}
+
+function clearSearchHistory() {
+  localStorage.removeItem("searchHistory");
+  loadSearchHistory(); // Atualizar a exibição do histórico (será vazia após a limpeza)
 }
