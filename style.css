@@ -9,6 +9,7 @@
 
 /* Definir fontes padrões mais consistentes */
 body,
+botton,
 h1,
 h2,
 h3,
@@ -137,6 +138,31 @@ input {
   align-content: center;
 }
 
+.icon-time {
+  max-width: 30px;
+  padding: 0.4125rem;
+  display: flex;
+  align-content: center;
+}
+
+.button-history {
+  margin-top: 1.3rem;
+  width: 30rem;
+  max-width: 800px;
+  display: none;
+}
+
+.container-button-history {
+  background-color: #fff;
+  padding: 15px 50px;
+  font-size: 18px;
+  border: 0.125rem solid #bebab3;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .tracking-status-container {
   margin-top: 1.625rem;
   border: 0.0625rem solid #bebab3;
@@ -145,6 +171,7 @@ input {
   height: auto;
   padding: 1.25rem;
 }
+
 .tracking-history-item {
   margin-top: 1.625rem;
   border: 0.0625rem solid #bebab3;
@@ -153,6 +180,11 @@ input {
   height: auto;
   padding: 1.25rem;
   transition: background-color 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.history-item-content {
+  display: flex;
+  justify-content: space-between;
 }
 
 .tracking-history-item:hover {
@@ -213,31 +245,155 @@ input {
   z-index: 1000;
 }
 
+/* The Close Button */
+.close {
+  margin-top: -15px;
+  font-size: 30px;
+  color: #aaaaaa;
+  float: right;
+  font-weight: bold;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 2rem;
+  border: 0.0625rem solid #bebab3;
+  border-radius: 0.4125rem;
+  width: 30rem;
+}
+
+#tracking-history-container-mobile {
+  justify-content: center;
+}
+
+.container-button-history,
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 input:focus {
   outline: none;
 }
 
-/* Estilos para dispositivos com largura máxima de 600px */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1170px) {
   body {
     background-image: url("/img/map.svg");
-    background-size: cover; /* Cobrir toda a área visível */
+    background-size: cover;
     background-repeat: repeat;
     background-position: center center;
   }
 
   .title-image {
-    width: 55%; /* Tamanho relativo para se adaptar à tela */
-    height: auto; /* Altura automática para manter a proporção */
+    width: 55%;
+    height: auto;
+  }
+
+  .button-history {
+    width: 30rem;
+    display: block;
+  }
+
+  div .container {
+    display: flex;
+    justify-content: space-between;
+    width: 30rem;
+    min-height: 60vh;
+  }
+
+  div .tracking-history {
+    display: none;
   }
 
   div .tracking-form,
   input {
-    width: 85%; /* Largura relativa para ocupar a maioria da tela */
+    width: 85%;
   }
+
   div .tracking-container {
     min-height: 100vh;
-    width: 90%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tracking-status-container {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .img-carregando {
+    max-width: 50%;
+    max-height: 50%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    background-image: url("/img/map.svg");
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center center;
+  }
+
+  .title-image {
+    width: 55%;
+    height: auto;
+  }
+
+  .button-history {
+    width: 25rem;
+    display: block;
+  }
+
+  .modal-content {
+    width: 25rem;
+  }
+
+  .tracking-history-item {
+    width: 21rem;
+  }
+
+  div .container {
+    display: flex;
+    justify-content: space-between;
+    width: 25rem;
+    min-height: 60vh;
+  }
+
+  div .tracking-history {
+    display: none;
+  }
+
+  div .tracking-form,
+  input {
+    width: 85%;
+  }
+
+  div .tracking-container {
+    min-height: 100vh;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .tracking-status-container {
