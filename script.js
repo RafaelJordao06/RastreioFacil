@@ -27,7 +27,7 @@ function performSearch() {
 
   document.getElementById("loadingScreen").style.display = "flex";
 
-  fetch("https://api-rastreio-pce1.onrender.com/track/" + trackingCode, {
+  fetch("http://18.230.126.11:3333/track/" + trackingCode, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
