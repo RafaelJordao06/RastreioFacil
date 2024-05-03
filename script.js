@@ -27,7 +27,8 @@ function performSearch() {
 
   document.getElementById("loadingScreen").style.display = "flex";
 
-  fetch("http://18.230.126.11:3333/track/" + trackingCode, {
+
+  fetch("http://18.230.126.11:3333/track/"+trackingCode, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
