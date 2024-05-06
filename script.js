@@ -27,13 +27,13 @@ function performSearch() {
 
   document.getElementById("loadingScreen").style.display = "flex";
 
+  fetch("https://rastreio-facil.vercel.app/api/track/" + trackingCode, {
 
-  fetch("http://18.230.126.11:3333/track/"+trackingCode, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-  })
+})
     .then((response) => response.json())
     .then((data) => {
       processarEventos(data.eventos);
