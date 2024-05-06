@@ -28,6 +28,7 @@ function performSearch() {
   document.getElementById("loadingScreen").style.display = "flex";
 
   fetch("https://rastreio-facil.vercel.app/api/track/" + trackingCode, {
+
     method: "GET",
     headers: {
       "Content-Type": "application/json",
