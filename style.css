@@ -48,12 +48,18 @@ img,
 iframe {
   border: 0;
 }
-
 body {
-  background-image: url("/img/map.svg");
-  background-size: cover;
-  background-repeat: repeat;
-  background-position: center center;
+  background-color: white;
+  background-image: linear-gradient(
+      to right,
+      rgba(224, 224, 224, 0.5) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(224, 224, 224, 0.5) 1px, transparent 1px);
+  background-size: 20px 20px;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
 
 p {
@@ -116,6 +122,27 @@ input {
   width: 35.625rem;
   padding: 0.625rem 0;
   border: none;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.clear-history-button {
+  background-color: #ff4c4c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.clear-history-button:hover {
+  background-color: #ff3333;
 }
 
 .main-container {
@@ -295,12 +322,12 @@ input:focus {
 }
 
 @media screen and (max-width: 1170px) {
-  body {
+  /* body {
     background-image: url("/img/map.svg");
     background-size: cover;
     background-repeat: repeat;
     background-position: center center;
-  }
+  } */
 
   .title-image {
     width: 55%;
@@ -348,12 +375,12 @@ input:focus {
 }
 
 @media screen and (max-width: 500px) {
-  body {
+  /* body {
     background-image: url("/img/map.svg");
     background-size: cover;
     background-repeat: repeat;
     background-position: center center;
-  }
+  } */
 
   .title-image {
     width: 55%;
@@ -409,12 +436,12 @@ input:focus {
 }
 
 @media screen and (max-width: 380px) {
-  body {
+  /* body {
     background-image: url("/img/map.svg");
     background-size: cover;
     background-repeat: repeat;
     background-position: center center;
-  }
+  } */
 
   .title-image {
     width: 55%;
