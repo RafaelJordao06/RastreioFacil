@@ -1,24 +1,15 @@
-// Event listener para a tecla Enter no campo de código
-document
-  .getElementById("codigo")
-  .addEventListener("keypress", function (evento) {
-    if (evento.key === "Enter") {
-      performSearch();
-    }
-  });
-
-// Carregar histórico do localStorage quando a janela é carregada
+// Combinação de todas as funções de carregamento no window.onload
 window.onload = function () {
+  // Carregar o histórico de rastreio salvo no localStorage
   loadSearchHistory();
-};
 
-// Carregar o tema salvo no localStorage (se existir)
-window.onload = function () {
+  // Carregar o tema salvo no localStorage (se existir)
   const temaSalvo = localStorage.getItem('tema');
+  const toggleSwitch = document.getElementById('theme-toggle');
   if (temaSalvo) {
     document.body.classList.toggle('dark-theme', temaSalvo === 'escuro');
+    toggleSwitch.checked = (temaSalvo === 'escuro');
   }
-  loadSearchHistory();
 };
 
 // Alternar tema quando o botão for clicado
@@ -29,16 +20,6 @@ document.getElementById('theme-toggle').addEventListener('click', function () {
   const isDarkTheme = document.body.classList.contains('dark-theme');
   localStorage.setItem('tema', isDarkTheme ? 'escuro' : 'claro');
 });
-
-// Carregar o tema salvo no localStorage (se houver)
-window.onload = function () {
-  const temaSalvo = localStorage.getItem('tema');
-  const toggleSwitch = document.getElementById('theme-toggle');
-  if (temaSalvo === 'escuro') {
-    document.body.classList.add('dark-theme');
-    toggleSwitch.checked = true;
-  }
-};
 
 // Alternar tema e salvar no localStorage
 document.getElementById('theme-toggle').addEventListener('change', function () {
@@ -51,6 +32,12 @@ document.getElementById('theme-toggle').addEventListener('change', function () {
   }
 });
 
+// Event listener para a tecla Enter no campo de código
+document.getElementById("codigo").addEventListener("keypress", function (evento) {
+  if (evento.key === "Enter") {
+    performSearch();
+  }
+});
 
 // Função principal para realizar a busca
 function performSearch() {
@@ -68,24 +55,22 @@ function performSearch() {
   document.getElementById("loadingScreen").style.display = "flex";
 
   fetch("https://api-rastreio-node.vercel.app/track/" + trackingCode, {
-
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-})
+  })
     .then((response) => response.json())
     .then((data) => {
       processarEventos(data.eventos);
       document.getElementById("loadingScreen").style.display = "none";
+      // Salvar o código de rastreio no histórico após a busca bem-sucedida
+      saveSearchToHistory(trackingCode);
     })
     .catch((error) => {
       console.error("Erro ao rastrear:", error);
       document.getElementById("loadingScreen").style.display = "none";
     });
-
-  console.log("Search performed:", trackingCode);
-  saveSearchToHistory(trackingCode);
 }
 
 // Processar eventos e exibir na interface
@@ -111,9 +96,7 @@ function criarHtmlEvento(evento) {
     <div class="tracking-status-container">
       <p class="tracking-status-title">${evento.status}</p>
       <div class="status-information">
-        <img class="icon" src="/img/${selecionarIcon(
-          evento.status
-        )}" alt="titulo">
+        <img class="icon" src="/img/${selecionarIcon(evento.status)}" alt="titulo">
         <div class="tracking-details">
           <div class="time">
             <span class="data">${evento.data}</span>
@@ -132,8 +115,7 @@ function selecionarIcon(status) {
   var mapeamentoIcones = {
     "Objeto entregue ao destinatário": "certo.svg",
     "Objeto saiu para entrega ao destinatário": "entregadorMoto.svg",
-    "A entrega não pode ser efetuada - carteiro não atendido":
-      "entregadorNaoRecebido.svg",
+    "A entrega não pode ser efetuada - carteiro não atendido": "entregadorNaoRecebido.svg",
     "Objeto encaminhado": "caminhao.svg",
     "Objeto recebido pelos Correios do Brasil": "bandeira.svg",
     "Objeto postado": "entregador.svg",
@@ -167,9 +149,7 @@ function loadSearchHistory() {
   var historyContainer = document.getElementById("tracking-history-container");
   historyContainer.innerHTML = "";
 
-  var historyContainerMobile = document.getElementById(
-    "tracking-history-container-mobile"
-  );
+  var historyContainerMobile = document.getElementById("tracking-history-container-mobile");
   historyContainerMobile.innerHTML = "";
 
   var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
@@ -224,22 +204,3 @@ function clearSearchHistory() {
   localStorage.removeItem("searchHistory");
   loadSearchHistory();
 }
-
-// Configurar eventos para abrir e fechar a modal
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
-
-btn.onclick = function () {
-  modal.style.display = "block";
-};
-
-span.onclick = function () {
-  modal.style.display = "none";
-};
-
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
