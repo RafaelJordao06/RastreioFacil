@@ -12,6 +12,46 @@ window.onload = function () {
   loadSearchHistory();
 };
 
+// Carregar o tema salvo no localStorage (se existir)
+window.onload = function () {
+  const temaSalvo = localStorage.getItem('tema');
+  if (temaSalvo) {
+    document.body.classList.toggle('dark-theme', temaSalvo === 'escuro');
+  }
+  loadSearchHistory();
+};
+
+// Alternar tema quando o botão for clicado
+document.getElementById('theme-toggle').addEventListener('click', function () {
+  document.body.classList.toggle('dark-theme');
+
+  // Salvar a preferência do tema no localStorage
+  const isDarkTheme = document.body.classList.contains('dark-theme');
+  localStorage.setItem('tema', isDarkTheme ? 'escuro' : 'claro');
+});
+
+// Carregar o tema salvo no localStorage (se houver)
+window.onload = function () {
+  const temaSalvo = localStorage.getItem('tema');
+  const toggleSwitch = document.getElementById('theme-toggle');
+  if (temaSalvo === 'escuro') {
+    document.body.classList.add('dark-theme');
+    toggleSwitch.checked = true;
+  }
+};
+
+// Alternar tema e salvar no localStorage
+document.getElementById('theme-toggle').addEventListener('change', function () {
+  if (this.checked) {
+    document.body.classList.add('dark-theme');
+    localStorage.setItem('tema', 'escuro');
+  } else {
+    document.body.classList.remove('dark-theme');
+    localStorage.setItem('tema', 'claro');
+  }
+});
+
+
 // Função principal para realizar a busca
 function performSearch() {
   var inputCodigo = document.getElementById("codigo");
@@ -147,7 +187,7 @@ function criarHtmlSearchHistoryItem(searchItem) {
     <div class="tracking-history-item" onclick="selecionarHistorico('${searchItem}')">
       <div class="history-item-content">
         <p>${searchItem}</p>
-        <img src="/img/lupa.svg" alt="Buscar">
+        <img class="icon-busca" src="/img/lupa.svg" alt="Buscar">
       </div>
     </div>`;
 }

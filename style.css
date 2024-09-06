@@ -1,3 +1,31 @@
+/* Tema Claro (default) */
+:root {
+  --color-primary-text: #333;
+  --color-secondary-text: #666;
+  --color-background: #fff;
+  --color-border: #bebab3;
+  --color-background-alt: #f0f0f0;
+  --color-background-line: rgba(224, 224, 224, 0.5);
+  --color-button-primary: #ff4c4c;
+  --color-button-primary-hover: #ff3333;
+  --color-modal-background: rgba(0, 0, 0, 0.4);
+  --color-loading-background: rgba(0, 0, 0, 0.5);
+}
+
+/* Tema Escuro */
+.dark-theme {
+  --color-primary-text: #e0e0e0;
+  --color-secondary-text: #b0b0b0;
+  --color-background: #535353;
+  --color-background-line: rgb(120 120 120 / 50%);
+  --color-border: #444;
+  --color-background-alt: #333;
+  --color-button-primary: #ff4c4c;
+  --color-button-primary-hover: #ff3333;
+  --color-modal-background: rgba(0, 0, 0, 0.8);
+  --color-loading-background: rgba(255, 255, 255, 0.2);
+}
+
 /* Reset CSS Básico */
 
 /* Remover margens e preenchimentos padrões */
@@ -28,7 +56,7 @@ dd {
     "Helvetica Neue", Arial, sans-serif;
   font-size: 1em;
   line-height: 1.6;
-  color: #333;
+  color:var(--color-primary-text);
 }
 
 /* Remover list-style para listas não ordenadas e ordenadas */
@@ -49,13 +77,13 @@ iframe {
   border: 0;
 }
 body {
-  background-color: white;
+  background-color: var(--color-background);
   background-image: linear-gradient(
       to right,
-      rgba(224, 224, 224, 0.5) 1px,
+      var(--color-background-line) 1px,
       transparent 1px
     ),
-    linear-gradient(to bottom, rgba(224, 224, 224, 0.5) 1px, transparent 1px);
+    linear-gradient(to bottom, var(--color-background-line) 1px, transparent 1px);
   background-size: 20px 20px;
   margin: 0;
   padding: 0;
@@ -74,10 +102,10 @@ div .container {
 }
 
 div .tracking-container {
-  background-color: #fff;
+  background-color: var(--color-background);
   width: 37.125rem;
   margin-top: 2.25rem;
-  border: 0.125rem solid #bebab3;
+  border: 0.125rem solid var(--color-border);
   border-radius: 1rem;
   min-height: 60vh;
   padding-bottom: 1rem;
@@ -98,9 +126,9 @@ div .tracking-search {
 }
 
 div .tracking-history {
-  background-color: #fff;
+  background-color: var(--color-background);
   margin-top: 2.25rem;
-  border: 0.125rem solid #bebab3;
+  border: 0.125rem solid var(--color-border);
   border-radius: 1rem;
   min-height: 60vh;
   padding-bottom: 1rem;
@@ -113,10 +141,40 @@ div .tracking-history {
 
 div .tracking-code-container {
   display: flex;
-  border: 0.0625rem solid #bebab3;
+  border: 0.0625rem solid var(--color-border);
   padding: 0.625rem;
   border-radius: 0.3125rem;
 }
+
+/* Estilo do input para o tema claro */
+.input {
+  background-color: var(--color-background-alt); /* Fundo claro */
+  color: var(--color-primary-text); /* Cor do texto */
+  border: 1px solid var(--color-border); /* Cor da borda */
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+/* Estilo do input para o tema escuro */
+.dark-theme .input {
+  background-color: var(--color-background); /* Cor de fundo no tema escuro */
+  color: var(--color-primary-text); /* Cor do texto no tema escuro */
+  border: 1px solid var(--color-border); /* Borda no tema escuro */
+}
+
+/* Placeholder com cor personalizada */
+.input::placeholder {
+  color: var(--color-secondary-text); /* Cor do placeholder */
+  opacity: 1;
+}
+
+/* Borda e fundo ao focar no input */
+.input:focus {
+  border-color: var(--color-button-primary); /* Cor da borda ao focar */
+  outline: none;
+}
+
 
 input {
   width: 35.625rem;
@@ -132,7 +190,7 @@ input {
 }
 
 .clear-history-button {
-  background-color: #ff4c4c;
+  background-color: var(--color-button-primary);
   color: white;
   border: none;
   border-radius: 5px;
@@ -142,7 +200,7 @@ input {
 }
 
 .clear-history-button:hover {
-  background-color: #ff3333;
+  background-color: var(--color-button-primary-hover);
 }
 
 .main-container {
@@ -155,14 +213,24 @@ input {
 }
 
 .title-image {
+  content: url('/img/iconLogoBlack.svg');
   width: 25.4375rem;
   height: 20vh;
+}
+
+.dark-theme .title-image {
+  content: url('/img/iconLogoWhite.svg');
 }
 
 .icon-busca {
   padding: 0.3125rem;
   display: flex;
   align-content: center;
+  content: url('/img/lupa.svg');
+}
+
+.dark-theme .icon-busca {
+  content: url('/img/lupaWhite.svg');
 }
 
 .icon-time {
@@ -180,10 +248,10 @@ input {
 }
 
 .container-button-history {
-  background-color: #fff;
+  background-color: var(--color-background);
   padding: 15px 50px;
   font-size: 18px;
-  border: 0.125rem solid #bebab3;
+  border: 0.125rem solid var(--color-border);
   border-radius: 1rem;
   display: flex;
   align-items: center;
@@ -192,7 +260,7 @@ input {
 
 .tracking-status-container {
   margin-top: 1.625rem;
-  border: 0.0625rem solid #bebab3;
+  border: 0.0625rem solid var(--color-border);
   border-radius: 0.3125rem;
   width: 26rem;
   height: auto;
@@ -201,7 +269,7 @@ input {
 
 .tracking-history-item {
   margin-top: 1.625rem;
-  border: 0.0625rem solid #bebab3;
+  border: 0.0625rem solid var(--color-border);
   border-radius: 0.3125rem;
   width: 25.23rem;
   height: auto;
@@ -215,7 +283,7 @@ input {
 }
 
 .tracking-history-item:hover {
-  background-color: #f0f0f0; /* Cor de fundo quando o mouse está sobre o item */
+  background-color: var(--color-background-alt); /* Cor de fundo quando o mouse está sobre o item */
   cursor: pointer; /* Altera o cursor para indicar que é clicável */
 }
 
@@ -259,13 +327,93 @@ input {
   justify-self: end;
 }
 
+.switch-text {
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* Estilo do container do switch */
+.theme-switch-container {
+  position: relative;
+  width: 60px;
+  height: 30px;
+}
+
+/* Ocultar o checkbox padrão */
+.theme-switch-checkbox {
+  display: none;
+}
+
+/* Estilo do label que atua como o "switch" */
+.theme-switch-label {
+  background-color: var(--color-background-alt);
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo do botão que se move no switch */
+.theme-switch-button {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  background-color: var(--color-background-alt);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s ease;
+}
+
+/* Ícone de sol (modo claro) */
+.sun-icon {
+  color: #f0f0f0;
+  font-size: 14px;
+  display: none; /* Oculto no início */
+}
+
+/* Ícone de lua (modo escuro) */
+.moon-icon {
+  color: var(--color-secondary-text);
+  font-size: 14px;
+  display: block;
+}
+
+/* Mover o botão para a direita quando o checkbox estiver ativado */
+.theme-switch-checkbox:checked + .theme-switch-label .theme-switch-button {
+  left: 30px;
+}
+
+/* Alterar o fundo para indicar o modo escuro quando ativado */
+.theme-switch-checkbox:checked + .theme-switch-label {
+  background-color: var(--color-secondary-text);
+}
+
+/* Alternar ícones de sol e lua */
+.theme-switch-checkbox:checked + .theme-switch-label .sun-icon {
+  display: block;
+}
+
+.theme-switch-checkbox:checked + .theme-switch-label .moon-icon {
+  display: none;
+}
+
+
 #loadingScreen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--color-loading-background);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -291,16 +439,15 @@ input {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  background-color: var(--color-modal-background); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: var(--color-background);
   margin: auto;
   padding: 2rem;
-  border: 0.0625rem solid #bebab3;
+  border: 0.0625rem solid var(--color-border);
   border-radius: 0.4125rem;
   width: 30rem;
 }
