@@ -10,6 +10,28 @@ window.onload = function () {
     document.body.classList.toggle('dark-theme', temaSalvo === 'escuro');
     toggleSwitch.checked = (temaSalvo === 'escuro');
   }
+
+  // Configurar a funcionalidade de abrir e fechar a modal
+  var modal = document.getElementById("myModal");
+  var btn = document.getElementById("myBtn");
+  var span = document.getElementsByClassName("close")[0];
+
+  // Quando o usuário clicar no botão, abre a modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // Quando o usuário clicar no 'x' (fechar), fecha a modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // Quando o usuário clicar fora da modal, também fecha
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 };
 
 // Alternar tema quando o botão for clicado
@@ -83,8 +105,8 @@ function processarEventos(eventos) {
       container.innerHTML += criarHtmlEvento(evento);
     });
   } else {
-    container.innerHTML += `
-      <div class="tracking-status-container">
+    container.innerHTML += 
+      `<div class="tracking-status-container">
         <p class="tracking-status-title">Nenhum evento encontrado com esse código de rastreio</p>
       </div>`;
   }
@@ -102,9 +124,7 @@ function criarHtmlEvento(evento) {
             <span class="data">${evento.data}</span>
             <span class="hora">${evento.hora}</span>
           </div>
-          <p class="status-description">
-            ${evento.local}
-          </p>
+          <p class="status-description">${evento.local}</p>
         </div>
       </div>
     </div>`;
