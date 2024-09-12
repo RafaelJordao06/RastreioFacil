@@ -81,8 +81,9 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  overflow-y: auto; /* Permite o scroll vertical */
+  overflow-x: hidden; /* Evita o scroll horizontal */
   position: relative;
-  overflow: hidden;
 }
 
 body::before {
@@ -596,7 +597,7 @@ input:focus {
   }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 400px) {
   /* body {
     background-image: url("/img/map.svg");
     background-size: cover;
