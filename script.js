@@ -76,7 +76,7 @@ function performSearch() {
 
   document.getElementById("loadingScreen").style.display = "flex";
 
-  fetch("https://api-rastreio-node.vercel.app/track/" + trackingCode, {
+  fetch("https://hfsutjlhsc.execute-api.us-east-1.amazonaws.com/track/" + trackingCode, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
