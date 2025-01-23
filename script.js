@@ -76,7 +76,7 @@ function performSearch() {
 
   document.getElementById("loadingScreen").style.display = "flex";
 
-  fetch("https://hfsutjlhsc.execute-api.us-east-1.amazonaws.com/track/" + trackingCode, {
+  fetch("https://n7a2e2u3c4.execute-api.us-east-1.amazonaws.com/track/" + trackingCode, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
